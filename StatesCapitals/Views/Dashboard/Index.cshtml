@@ -1,0 +1,39 @@
+﻿@model List<StatesCapitals.Models.TestResult>
+
+@{ ViewBag.Title = "UserDashBoard"; }
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<div class="container" ng-app="myApp" ng-controller="myCtrl" ng-init="getQuestions()">
+    <br />
+    <div class="row">
+        <span style="font-size: large">Select the number of questions to take:</span>
+        <input type="text" value="{{quantity}}" id="quantity" />
+        <input type="button" class="btn btn-primary" value="New Questions" ng-click="getQuestions()" />
+    </div>
+
+    <div class="row">
+        <h3>Please identify the capital of each state:</h3>
+    </div>
+
+    <ul id="questions" class="text-center">
+        <li style="list-style:none; " ng-repeat="x in questions">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col col-md-6 text-left">
+                        <span style="font-size: large">{{"What is the capital of " + x + "?"}}</span>
+                    </div>
+                    <div class="col col-md-6">
+                        <input style="text-align: right; font-size: large" ng-attr-id="{{x}}" ng-value="" ng-attr-name="{{x}}" type="text" />
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <input type="button" class="btn btn-primary" value="Send Answers" ng-click="SendAnswers()" />
+</div>
+
+
+
+<script src="~/Scripts/Quiz/Dashboard.js"></script>
